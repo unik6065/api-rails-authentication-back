@@ -1,3 +1,9 @@
 class ApplicationController < ActionController::Base
-  skip_before_action :verify_authenticity_token
+  before_action :set_csft_cookie
+
+  private
+
+  def set_csft_cookie
+    cookies['CSRF-TOKEN'] = form_authenticity_token
+  end
 end
