@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_csft_cookie
-    cookies['CSRF-TOKEN'] = form_authenticity_token
+    cookies['CSRF-TOKEN'] = {
+      value: form_authenticity_token,
+      domain: :all,
+      same_site: :none,
+      secure: true
+    }
   end
 end
